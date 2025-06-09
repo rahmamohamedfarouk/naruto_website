@@ -1,0 +1,238 @@
+.title-animation {
+    position: relative;
+    display: inline-block;
+}
+
+.title-animation::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-color);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s ease;
+}
+
+.title-animation:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* SAFE Character Card Animation (No Flip - Causes Visibility Issues) */
+.character-card {
+    transition: all 0.3s ease;
+}
+
+.character-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Jutsu Card Hover Animation (Safe) */
+.jutsu-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.jutsu-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+}
+
+.jutsu-card:hover::before {
+    left: 100%;
+}
+
+/* Sharingan Eye Animation (Safe) */
+.sharingan-eye {
+    width: 100px;
+    height: 100px;
+    background-color: #d62828;
+    border-radius: 50%;
+    position: relative;
+    margin: 50px auto;
+    animation: pulse 2s infinite;
+}
+
+.sharingan-eye::before,
+.sharingan-eye::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+
+.sharingan-eye::before {
+    width: 30px;
+    height: 30px;
+    background-color: #000;
+}
+
+.sharingan-eye::after {
+    width: 80px;
+    height: 80px;
+    border: 3px solid #000;
+    clip-path: polygon(
+        50% 50%, 80% 10%, 80% 10%, 50% 50%, 20% 10%,
+        20% 10%, 50% 50%, 10% 20%, 10% 20%, 50% 50%,
+        10% 80%, 10% 80%, 50% 50%, 20% 90%, 20% 90%,
+        50% 50%, 80% 90%, 80% 90%, 50% 50%, 90% 80%,
+        90% 80%, 50% 50%, 90% 20%, 90% 20%, 50% 50%
+    );
+    animation: spin 5s linear infinite;
+}
+
+/* Rasengan Animation (Safe) */
+.rasengan {
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle at center, #fcbf49, #f77f00, #d62828);
+    border-radius: 50%;
+    position: relative;
+    margin: 50px auto;
+    animation: pulse-blue 2s infinite;
+}
+
+.rasengan::before,
+.rasengan::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+
+.rasengan::before {
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(circle at center, #eae2b7, transparent 70%);
+}
+
+.rasengan::after {
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(circle at center, #ffffff, transparent 70%);
+}
+
+/* Scroll Reveal Animation (Safe) */
+.reveal {
+    transition: all 0.8s ease;
+}
+
+.reveal:not(.active) {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Chidori Lightning Effect (Safe) */
+.chidori {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 50px auto;
+}
+
+.chidori::before,
+.chidori::after {
+    content: '';
+    position: absolute;
+}
+
+.chidori::before {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 100px;
+    background: linear-gradient(to bottom, #ffffff, #00ffff);
+    border-radius: 5px;
+    animation: lightning 0.5s linear infinite;
+}
+
+.chidori::after {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle at center, rgba(0, 255, 255, 0.8), transparent 70%);
+    border-radius: 50%;
+}
+
+/* Kunai Throw Animation (Safe) */
+.kunai {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: throw 2s linear infinite;
+}
+
+/* Smoke Bomb Effect (Safe) */
+.smoke-bomb {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.8), transparent 70%);
+    border-radius: 50%;
+    animation: smoke 2s ease-out forwards;
+}
+
+/* Keyframes (Safe) */
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(214, 40, 40, 0.7); }
+    70% { box-shadow: 0 0 0 20px rgba(214, 40, 40, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(214, 40, 40, 0); }
+}
+
+@keyframes spin {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes pulse-blue {
+    0% { box-shadow: 0 0 0 0 rgba(252, 191, 73, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(252, 191, 73, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(252, 191, 73, 0); }
+}
+
+@keyframes lightning {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+@keyframes throw {
+    0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+    10%, 90% { opacity: 1; }
+    100% { transform: translate(500px, 200px) rotate(720deg); opacity: 0; }
+}
+
+@keyframes smoke {
+    0% { transform: scale(0.1); opacity: 1; }
+    100% { transform: scale(3); opacity: 0; }
+}
+
+/* Critical Fix for Character Images */
+.character-image img {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    backface-visibility: visible !important;
+}
